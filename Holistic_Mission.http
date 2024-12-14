@@ -1,0 +1,6 @@
+@Holistic_Mission_HostAddress = http://localhost:5038
+
+GET {{Holistic_Mission_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
