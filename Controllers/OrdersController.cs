@@ -8,13 +8,12 @@ namespace Holistic_Mission.Controllers
     [Route("api/[controller]")]
     [ApiController]
     public class OrdersController : ControllerBase
-    {
-        private readonly IOrderRepo _orderRepo;
-
+    {   
         public OrdersController(IOrderRepo orderRepo)
         {
-            _orderRepo = orderRepo;
+             orderRepo= _orderRepo;
         }
+        private readonly IOrderRepo _orderRepo;
 
         [HttpGet]
         public ActionResult<List<OrderResponserDTo>> GetOrders()

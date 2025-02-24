@@ -5,14 +5,13 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Holistic_Mission.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
+    
     public class CustomersController : ControllerBase
     {
-        private readonly ICustomerRepo _customerRepo;
+
         public CustomersController(ICustomerRepo customerRepo)
         {
-            _customerRepo = customerRepo;
+              customerRepo= customerRepo;
 
         }
 
@@ -20,7 +19,7 @@ namespace Holistic_Mission.Controllers
         [HttpGet]
         public IActionResult GetAllCustomer()
         {
-            var customers = _customerRepo.customerResponseDtos(new CustomerResponseDto());
+            var customers = customerRepo.customerResponseDtos(new CustomerResponseDto());
             if (customers == null)
             {
                 return NotFound();
@@ -31,7 +30,7 @@ namespace Holistic_Mission.Controllers
 
         [HttpGet("{id}")]
         public IActionResult GetCustomer(int id) {
-            var customerDto = _customerRepo.getCustomerById(new CustomerResponseDto { Id = id });
+            var customerDto = customerRepo.getCustomerById(new CustomerResponseDto { Id = id });
             if (customerDto == null)
             {
                 return NotFound();
@@ -48,7 +47,7 @@ namespace Holistic_Mission.Controllers
             {
                 return BadRequest();
             }
-            _customerRepo.AddedCustomer(customerRequstDto);
+            customerRepo.AddedCustomer(customerRequstDto);
             return Created();
 
           

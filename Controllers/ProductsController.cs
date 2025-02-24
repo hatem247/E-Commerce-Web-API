@@ -11,23 +11,22 @@ namespace Holistic_Mission.Controllers
     [ApiController]
     public class ProductsController : ControllerBase
     {
-        private readonly IProductRepo _productRepo;
+        private readonly IProductRepo productRepo;
 
 
-        public ProductsController(IProductRepo productRepo)
+        public ProductsController(IProductRepo _productRepo)
         {
-            _productRepo = productRepo;
+            productRepo = _productRepo;
         }
 
-        [HttpPost]
         public IActionResult AddProduct(ProductRequstDto productRequstDto)
         {
             if (productRequstDto == null)
             {
                 return BadRequest("Invalid product data.");
             }
-            _productRepo.AddProduct(productRequstDto);
-            return Created();
+            productRepo.AddProduct(productRequstDto);
+            return Created(); 
          
         }
     }

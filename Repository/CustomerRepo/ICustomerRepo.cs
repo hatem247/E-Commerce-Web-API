@@ -9,6 +9,5 @@ namespace Holistic_Mission.Repository.CustomerRepo
         CustomerResponseDto getCustomerById(CustomerResponseDto id);
         void AddedCustomer(CustomerRequstDto customerRequstDto);
 
-
     }
 }

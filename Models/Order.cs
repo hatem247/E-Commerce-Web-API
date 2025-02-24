@@ -8,7 +8,6 @@ namespace Holistic_Mission.Models
         public int Id { get; set; }
         [Required]
         public int TotalPrice { get; set; }
-        public IList<Product> Products { get; set; }
         public Customer? customer { get; set; }
 
     }
