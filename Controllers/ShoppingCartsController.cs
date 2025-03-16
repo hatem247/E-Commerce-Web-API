@@ -14,7 +14,7 @@ namespace Holistic_Mission.Controllers
 
         public ShoppingCartsController(IShoppingCartRepo shoppingCartRepo)
         {
-             shoppingCartRepo = _shoppingCartRepo;
+            _shoppingCartRepo = shoppingCartRepo;
 
         }
         [HttpPost]

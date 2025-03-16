@@ -15,5 +15,6 @@ namespace Holistic_Mission.DTOs.CustomerDto
         [EmailAddress]
         public string Email { get; set; }
         public ShoppingCartRequstDto ShoppingCartdto { get; set; }
+        public IList<OrderRequstDto> Orders { get; set; } 
     }
 }

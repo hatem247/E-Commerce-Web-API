@@ -9,7 +9,7 @@ namespace Holistic_Mission.Data
         {
         }
 
-         DbSet<Product>products { get; set; }
+        public DbSet<Product>products { get; set; }
         public DbSet<Customer> customers { get; set; }
         public DbSet<Order> orders { get; set; }
         public DbSet<ShoppingCart> shoppingCarts { get; set; }

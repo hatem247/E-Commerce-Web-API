@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Holistic_Mission.Repository.OrderRepo
 {
-    public class OrderRepo 
+    public class OrderRepo : IOrderRepo
     {
         private readonly ApplicationDbContext _context;
         public OrderRepo(ApplicationDbContext context)
@@ -34,7 +34,7 @@ namespace Holistic_Mission.Repository.OrderRepo
                 {
                     Name=orderDto.CustomerforOrderDto.Name,
                     phone=orderDto.CustomerforOrderDto.phone,
-                    //Email=orderDto.CustomerforOrderDto.Email,
+                    Email=orderDto.CustomerforOrderDto.Email,
                     ShoppingCart = new ShoppingCart
                     {
                         NumOfItems=orderDto.CustomerforOrderDto.ShoppingCartdto.NumOfItems,
@@ -85,7 +85,7 @@ namespace Holistic_Mission.Repository.OrderRepo
                 CustomerforOrderDto = order.customer != null ? new CustomerforOrderDto
                 {
                     Name = order.customer.Name,
-                    //Email = order.customer.Email,
+                    Email = order.customer.Email,
                     phone = order.customer.phone,
                     ShoppingCartdto = new ShoppingCartRequstDto
                     {
