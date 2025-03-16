@@ -58,8 +58,18 @@ namespace Holistic_Mission.Controllers
 
             _orderRepo.UpdateOrder(orderDto, id);
              return Accepted(); 
-            
-         
+        }
+
+        [HttpDelete("{id}")]
+        public ActionResult DeleteOrder(int id)
+        {
+            if (id == null)
+            {
+                return BadRequest("id is null");
+            }
+
+            _orderRepo.DeleteOrder(id);
+            return Ok("Order Deleted successfully");
         }
     }
 

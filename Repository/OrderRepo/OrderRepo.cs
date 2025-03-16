@@ -15,6 +15,7 @@ namespace Holistic_Mission.Repository.OrderRepo
         {
             _context = context;
         }
+
         public void AddOrder(OrderResponserDTo orderDto)
         {
             Order order = new Order()
@@ -95,9 +96,6 @@ namespace Holistic_Mission.Repository.OrderRepo
             }).ToList();
         }
 
-
-
-
         public void UpdateOrder(OrderRequstDto orderDto, int id)
         {
             var order = _context.orders.Include(p=>p.Products).FirstOrDefault(p=>p.Id == id);
@@ -116,6 +114,18 @@ namespace Holistic_Mission.Repository.OrderRepo
 
             }).ToList();
             _context.Update(order);
+            _context.SaveChanges();
+        }
+
+        public void DeleteOrder(int id)
+        {
+            if (id == null)
+            {
+                throw new ArgumentException($"Order with {id} not found");
+
+            }
+            var order = _context.orders.Include(p => p.Products).FirstOrDefault(p => p.Id == id);
+            _context.orders.Remove(order);
             _context.SaveChanges();
         }
     }

@@ -13,7 +13,6 @@ namespace Holistic_Mission.Controllers
         public CustomersController(ICustomerRepo customerRepo)
         {
             _customerRepo = customerRepo;
-
         }
 
 
@@ -37,8 +36,6 @@ namespace Holistic_Mission.Controllers
                 return NotFound();
             }
             return Ok(customerDto);
-
-
         }
 
         [HttpPost]
@@ -50,12 +47,6 @@ namespace Holistic_Mission.Controllers
             }
             _customerRepo.AddedCustomer(customerRequstDto);
             return Created();
-
-          
         }
-
-
-
-
     }
 }

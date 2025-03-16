@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Holistic_Mission.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241214160510_init")]
-    partial class init
+    [Migration("20250316084909_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
