@@ -16,7 +16,7 @@ namespace Holistic_Mission.Controllers
         }
 
 
-        [HttpGet]
+        [HttpGet("GetAll")]
         public IActionResult GetAllCustomer()
         {
             var customers = _customerRepo.customerResponseDtos(new CustomerResponseDto());

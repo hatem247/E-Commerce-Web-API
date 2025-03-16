@@ -10,6 +10,7 @@ namespace Holistic_Mission.DTOs.OrderDto
         public int TotalPrice { get; set; }
 
         public List<ProductRequstDto> ProductRequstdto { get; set; }
+        public int customerId { get; set; }
         
     }
 }

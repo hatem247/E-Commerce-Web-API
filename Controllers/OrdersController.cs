@@ -16,23 +16,17 @@ namespace Holistic_Mission.Controllers
             _orderRepo = orderRepo;
         }
 
-        [HttpGet]
+        [HttpGet("GetAll")]
         public ActionResult<List<OrderResponserDTo>> GetOrders()
         {
-           
-           
-             var orders = _orderRepo.GetOrders(new OrderResponserDTo());
+            var orders = _orderRepo.GetOrders(new OrderResponserDTo());
             if (orders == null) { 
-                return NotFound();  
-            
+                return NotFound();
             }
-
             return Ok(orders);
-            
-           
         }
 
-        [HttpPost]
+        [HttpPost("AddOrder")]
         public ActionResult AddOrder([FromBody] OrderRequstDto orderDto)
         {
             if (orderDto == null)
@@ -40,27 +34,23 @@ namespace Holistic_Mission.Controllers
                 return BadRequest("Order data is null");
             }
 
-            
-             _orderRepo.AddOrder(orderDto);
-            return Created(); 
-            
-           
+            if(_orderRepo.AddOrder(orderDto)) return Created();
+            else return BadRequest("Customer not found");
         }
 
       
-        [HttpPut("{id}")]
+        [HttpPut("Update/{id}")]
         public ActionResult UpdateOrder(int id, [FromBody] OrderRequstDto orderDto)
         {
             if (orderDto == null)
             {
                 return BadRequest("Order data is null");
             }
-
             _orderRepo.UpdateOrder(orderDto, id);
              return Accepted(); 
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("Delete/{id}")]
         public ActionResult DeleteOrder(int id)
         {
             if (id == null)

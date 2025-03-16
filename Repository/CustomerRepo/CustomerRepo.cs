@@ -22,8 +22,11 @@ namespace Holistic_Mission.Repository.CustomerRepo
             {
                 Email = customerRequstDto.Email,
                 Name = customerRequstDto.Name,
-               phone=customerRequstDto.phone 
-                
+                phone=customerRequstDto.phone,
+                ShoppingCart = new ShoppingCart
+                {
+                    NumOfItems = 0,
+                }
             };
             _context.Add(Addcustomer);
             _context.SaveChanges();
@@ -56,11 +59,10 @@ namespace Holistic_Mission.Repository.CustomerRepo
                     }).ToList()
                 }).ToList(),
 
-                ShoppingCartdto = customer.ShoppingCart != null ? new ShoppingCartRequstDto
+                ShoppingCartdto = new ShoppingCartRequstDto
                     {
                         NumOfItems = customer.ShoppingCart.NumOfItems
-                    }
-                    : null, 
+                    }, 
             }).ToList();
         }
 

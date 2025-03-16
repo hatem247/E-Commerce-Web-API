@@ -46,9 +46,10 @@ namespace Holistic_Mission.Repository.OrderRepo
             };
         }
 
-        public void AddOrder(OrderRequstDto orderDto)
+        public bool AddOrder(OrderRequstDto orderDto)
         {
-
+            var customer = _context.customers.FirstOrDefault(p => p.Id == orderDto.customerId);
+            if (customer == null) return false;
             Order order = new Order()
             {
                 TotalPrice = orderDto.TotalPrice,
@@ -57,13 +58,12 @@ namespace Holistic_Mission.Repository.OrderRepo
                     Name = p.Name,
                     Description = p.Description,
                     stockQuantity = p.stockQuantity,
-
-                }).ToList()
+                }).ToList(),
+                customer = customer
             };
-             
             _context.Add(order);
-
             _context.SaveChanges();
+            return true;
         }
 
         public List<OrderResponserDTo> GetOrders(OrderResponserDTo orderDto)
@@ -83,7 +83,7 @@ namespace Holistic_Mission.Repository.OrderRepo
                     stockQuantity = product.stockQuantity,
                 }).ToList(),
 
-                CustomerforOrderDto = order.customer != null ? new CustomerforOrderDto
+                CustomerforOrderDto = new CustomerforOrderDto
                 {
                     Name = order.customer.Name,
                     Email = order.customer.Email,
@@ -92,7 +92,7 @@ namespace Holistic_Mission.Repository.OrderRepo
                     {
                         NumOfItems = order.customer.ShoppingCart?.NumOfItems ?? 0  
                     }
-                } : null  
+                }
             }).ToList();
         }
 
