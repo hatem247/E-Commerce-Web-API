@@ -7,6 +7,6 @@ namespace Holistic_Mission.DTOs.ShoppinCartDTO
         [Required]
         public int NumOfItems { get; set; }
 
-        //public int CustomerId { get; set; }
+        public int CustomerId { get; set; }
     }
 }

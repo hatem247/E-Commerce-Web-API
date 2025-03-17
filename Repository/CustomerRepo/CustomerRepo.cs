@@ -45,6 +45,7 @@ namespace Holistic_Mission.Repository.CustomerRepo
 
             return customerResponse.Select(customer => new CustomerResponseDto
             {
+                Id=customer.Id,
                 Name = customer.Name,
                 Email = customer.Email,
                 phone = customer.phone,
@@ -81,6 +82,7 @@ namespace Holistic_Mission.Repository.CustomerRepo
 
             return new CustomerResponseDto
             {
+                Id=customerData.Id,
                 Name = customerData.Name,
                 Email = customerData.Email,
                 phone = customerData.phone,

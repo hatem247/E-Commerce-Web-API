@@ -15,7 +15,8 @@ namespace Holistic_Mission.Repository.ShoppingCartRepo
         {
             var shoppingCart = new ShoppingCart
             {
-                NumOfItems= shoppingCartRequstDto.NumOfItems,
+                NumOfItems = shoppingCartRequstDto.NumOfItems,
+                CustomerId = shoppingCartRequstDto.CustomerId
             };
             _context.Add(shoppingCart);
             _context.SaveChanges();

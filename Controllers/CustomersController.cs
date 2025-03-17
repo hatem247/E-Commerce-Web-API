@@ -15,8 +15,7 @@ namespace Holistic_Mission.Controllers
             _customerRepo = customerRepo;
         }
 
-
-        [HttpGet("GetAll")]
+        [HttpGet("GetAllCustomer")]
         public IActionResult GetAllCustomer()
         {
             var customers = _customerRepo.customerResponseDtos(new CustomerResponseDto());
@@ -27,8 +26,7 @@ namespace Holistic_Mission.Controllers
             return Ok(customers);
         }
 
-
-        [HttpGet("{id}")]
+        [HttpGet("GetCustomer/{id}")]
         public IActionResult GetCustomer(int id) {
             var customerDto = _customerRepo.getCustomerById(new CustomerResponseDto { Id = id });
             if (customerDto == null)
@@ -38,7 +36,7 @@ namespace Holistic_Mission.Controllers
             return Ok(customerDto);
         }
 
-        [HttpPost]
+        [HttpPost("AddCustomer")]
         public IActionResult AddCustomer(CustomerRequstDto customerRequstDto)
         {
             if (customerRequstDto == null)
